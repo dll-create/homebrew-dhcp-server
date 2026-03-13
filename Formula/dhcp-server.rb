@@ -8,9 +8,7 @@ class DhcpServer < Formula
   depends_on "node"
 
   def install
-    system "npm", "install", *std_npm_args, "--production"
-    libexec.install Dir["*"]
-    libexec.install ".gitignore"
+    system "npm", "install", *Language::Node.std_npm_install_args(libexec)
 
     (bin/"dhcp-server").write <<~EOS
       #!/bin/bash
@@ -25,7 +23,7 @@ class DhcpServer < Formula
         echo ""
       fi
 
-      exec node "#{libexec}/server.js" "$@"
+      exec node "#{libexec}/lib/node_modules/dhcp-server/server.js" "$@"
     EOS
   end
 
