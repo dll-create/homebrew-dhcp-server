@@ -1,3 +1,5 @@
+require "language/node"
+
 class DhcpServer < Formula
   desc "Lightweight DHCP server with modern web UI for BMC provisioning"
   homepage "https://github.com/dll-create/dhcp-server"
